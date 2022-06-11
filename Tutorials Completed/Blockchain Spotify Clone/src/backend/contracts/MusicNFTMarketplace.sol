@@ -30,7 +30,7 @@ contract MusicNFTMarketplace is ERC721("DAppFi", "DAPP"), Ownable {
         address _artist,
         uint256[] memory _prices
     ) payable {
-    require(
+        require(
             _prices.length * _royaltyFee <= msg.value,
             "Deployer must pay royalty fee for each token listed on the marketplace"
         );
@@ -57,5 +57,6 @@ contract MusicNFTMarketplace is ERC721("DAppFi", "DAPP"), Ownable {
         _transfer(address(this), msg.sender, _tokenId);
         payable(artist).transfer(royaltyFee);
         payable(seller).transfer(price);
+        emit MarketItemBought(_tokenId, seller, msg.sender, price);
     }
 }
