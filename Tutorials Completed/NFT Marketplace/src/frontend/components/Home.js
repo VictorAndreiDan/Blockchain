@@ -46,9 +46,10 @@ const Home = ({ marketplace, nft }) => {
     <main style={{ padding: "1rem 0" }}>
       <h2>Loading...</h2>
     </main>
-  )
+    )
   return (
     <div className="flex justify-center">
+      {/* checking if ittems array is not empty */}
       {items.length > 0 ?
         <div className="px-5 container">
           <Row xs={1} md={2} lg={4} className="g-4 py-5">
@@ -75,6 +76,7 @@ const Home = ({ marketplace, nft }) => {
           </Row>
         </div>
         : (
+          // item array is empty so we show this instead 
           <main style={{ padding: "1rem 0" }}>
             <h2>No listed assets</h2>
           </main>
