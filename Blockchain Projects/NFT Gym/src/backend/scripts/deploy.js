@@ -6,10 +6,13 @@ async function main() {
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
   // deploy contracts here:
-  
-  
-  // For each contract, pass the deployed contract and name to this function to save a copy of the contract ABI and address to the front end.
-  saveFrontendFiles();
+
+  // Get the ContractFactories and Signers here.
+  const NFTMembership = await ethers.getContractFactory("NFTMembership");
+  // deploy contracts
+  const nftmembership = await NFTMembership.deploy();
+  // Save copies of each contracts abi and address to the frontend.
+  saveFrontendFiles(nftmembership , "NFTMembership");
 }
 
 function saveFrontendFiles(contract, name) {
